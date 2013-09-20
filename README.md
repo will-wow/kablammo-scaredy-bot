@@ -1,7 +1,7 @@
 kablammo-template
 =================
 
-Clone this repo to create a kablammo strategy!
+Fork this repo to create a kablammo strategy!
 
 Read the strategy guide at https://github.com/carbonfive/kablammo-strategy/ to see how to write
 a strategy. A good place to start is the example strategies in that repo:
