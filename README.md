@@ -12,7 +12,7 @@ a strategy. A good place to start is the example strategies in that repo:
 
 Edit strategy.rb:
 
-  * https://github.com/carbonfive/kablammo-template/edit/master/strategy.rb
+  * https://github.com/${YOUR_GITHUB_NAME}/kablammo-template/edit/master/strategy.rb
 
 When you're ready to rock, copy your git URL and register your bot here:
 
