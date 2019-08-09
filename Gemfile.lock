@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/carbonfive/kablammo-strategy.git
-  revision: c046dcf1d65442795e4f9cc60ef84fdb8f81c086
+  remote: https://github.com/carbonfive/kablammo-strategy.git
+  revision: 1b25461a04a798a297fe3c7dc897664795966868
   specs:
     kablammo (0.1)
       execjs (= 1.4.0)
@@ -11,18 +11,49 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.2)
+    diff-lcs (1.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    json (1.8.0)
-    multi_json (1.8.0)
-    oj (2.1.4)
-    redis (3.0.4)
+    json (2.2.0)
+    method_source (0.9.2)
+    multi_json (1.13.1)
+    oj (3.8.1)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-nav (0.3.0)
+      pry (>= 0.9.10, < 0.13.0)
+    rack (2.0.7)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    redis (4.1.2)
     redis_message_capsule (0.8.3)
       json
       redis
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-core (3.8.2)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   kablammo!
+  pry
+  pry-nav
+  rack-test
+  rspec
+
+BUNDLED WITH
+   2.0.2

@@ -1,22 +1,97 @@
-# Game Info
-# 
-# board -- the game board
-#   See: https://github.com/carbonfive/kablammo-strategy/blob/master/lib/strategy/models/board.rb
-# robot -- you
-#   See: https://github.com/carbonfive/kablammo-strategy/blob/master/lib/strategy/models/robot.rb
-# opponents -- opponent robots
-#   See: https://github.com/carbonfive/kablammo-strategy/blob/master/lib/strategy/models/robot.rb
-# 
-# Actions:
-# 
-# fire!(skew=0) -- shot at something
-# rotate!(degrees) -- rotate the turret
-# rest -- rest and reload
-# move_north! -- move north
-# move_south! -- move south
-# move_east! -- move east
-# move_west! -- move west
+require 'scaredy/danger_matrix'
+require 'scaredy/danger_moves'
+
+# TODO: There's got to be a better way.
+require_relative './lib/strategy/models/board'
+
+include Scaredy
+
+@opponents = {}
+@turn = 0
 
 on_turn do
-  fire!
+  turn()
+end
+
+def turn
+  record_opponents()
+
+  # Calculate danger score from currently visible opponents.
+  danger_matrix = DangerMatrix.score(
+    battle.board, me, opponents
+  )
+
+  # Danger score of current cell.
+  current_danger = danger_matrix.at(me.x, me.y)
+
+  # Best move to escape danger.
+  moves = DangerMoves.best_moves(me, danger_matrix)
+  move_to_safety = first_possible_move(moves)
+
+  # A visible enemy that we're aiming at.
+  target = enemy_in_sights(opponents)
+  # A remembered enemy that we're aiming at.
+  far_target = enemy_in_sights(known_opponents)
+
+  return move_to_safety unless known_opponents.any?
+
+  # Always dodge an aimed enemy.
+  return move_to_safety if DangerScore.immediate_danger?(current_danger)
+
+  # Fire if not in immediate danger
+  return fire_at! target if target && !empty?
+
+  # Run if you can't shoot
+  return move_to_safety if DangerScore.seen?(current_danger)
+
+  # Aim at the last know location of an opponent, if safe
+  return aim_at! known_opponents.first unless far_target
+
+  "." if !me.ammo_full?
+
+  # Random walk
+  move_to_safety
+end
+
+def record_opponents
+  @turn += 1
+
+  # Update last seen players
+  opponents.each do |opponent|
+    @opponents[opponent.username] = {
+      last_seen: @turn,
+      opponent: opponent
+    }
+  end
+
+  # Clean up dead players
+  dead_players.each do |dead|
+    @opponents.delete(dead.username)
+  end
+end
+
+def known_opponents
+  @opponents
+    .values
+    .sort_by { |data| data[:last_seen] }
+    .reverse
+    .map { |data| data[:opponent] }
+end
+
+def enemy_in_sights(opponents)
+  opponents.find { |opponent| i.can_fire_at?(opponent) }
+end
+
+def empty?
+  me.ammo <= 0
+end
+
+def fire_at!(enemy, compensate = 0)
+  direction = robot.direction_to(enemy).round
+  skew = direction - robot.rotation
+  fire! skew
+end
+
+def dead_players
+  battle.robots.filter{|r| r.dead? }
 end
