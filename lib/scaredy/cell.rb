@@ -1,5 +1,5 @@
-require 'strategy/constants'
-require 'strategy/models'
+require "strategy/constants"
+require "strategy/models"
 
 module Scaredy
   class Cell

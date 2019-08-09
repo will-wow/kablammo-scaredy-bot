@@ -1,5 +1,5 @@
-require 'strategy/constants'
-require 'strategy/models'
+require "strategy/constants"
+require "strategy/models"
 
 module Scaredy
   class DangerMoves
@@ -11,9 +11,9 @@ module Scaredy
 
       directions = {
         NORTH => danger_matrix.at(x, y + 1),
-        EAST =>  danger_matrix.at(x + 1, y),
+        EAST => danger_matrix.at(x + 1, y),
         SOUTH => danger_matrix.at(x, y - 1),
-        WEST =>  danger_matrix.at(x - 1, y),
+        WEST => danger_matrix.at(x - 1, y),
         "." => danger_matrix.at(x, y),
       }
 

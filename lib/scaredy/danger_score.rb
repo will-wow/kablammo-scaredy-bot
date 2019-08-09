@@ -1,5 +1,5 @@
-require 'kablammo'
-require_relative './cell'
+require "kablammo"
+require_relative "./cell"
 
 module Scaredy
   class DangerScore
@@ -11,7 +11,7 @@ module Scaredy
 
     def self.score(cell, me, opponents)
       score = opponents.reduce(0) do |count, opponent|
-         count + danger_score(cell, opponent)
+        count + danger_score(cell, opponent)
       end
 
       score - aim_score(cell, me)

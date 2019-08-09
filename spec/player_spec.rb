@@ -1,23 +1,23 @@
-require 'kablammo'
-require_relative './battle_maker'
+require "kablammo"
+require_relative "./battle_maker"
 
 RSpec.describe Player do
   subject { Player.load_strategy("robot_0") }
 
-  let(:map) do 
+  let(:map) do
     [
       "_____",
       "_____",
       "0_x_1",
       "_____",
-      "_____"
+      "_____",
     ]
   end
 
   let(:robot_data) do
     {
-      1 => { rotation: 180 }
-    } 
+      1 => { rotation: 180 },
+    }
   end
 
   let(:battle) do
@@ -27,17 +27,17 @@ RSpec.describe Player do
   context "given no immediate threat" do
     it "moves towards turret by default" do
       expect(subject.execute_turn(battle)).to eq("e")
-    end 
+    end
   end
 
   context "given a threat" do
-    let(:map) do 
+    let(:map) do
       [
         "_____",
         "_____",
         "0___1",
         "_____",
-        "_____"
+        "_____",
       ]
     end
 

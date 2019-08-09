@@ -1,4 +1,4 @@
-require_relative './battle_maker'
+require_relative "./battle_maker"
 
 RSpec.describe BattleMaker do
   context "given a battle with no walls" do
@@ -9,11 +9,11 @@ RSpec.describe BattleMaker do
           "_____",
           "0___1",
           "_____",
-          "__2__"
+          "__2__",
         ],
         {
           0 => { rotation: 0 },
-          1 => { rotation: 180 }
+          1 => { rotation: 180 },
         }
       )
     end
@@ -50,11 +50,11 @@ RSpec.describe BattleMaker do
           "_____",
           "0_x_1",
           "_____",
-          "__2__"
+          "__2__",
         ],
         {
           0 => { rotation: 0 },
-          1 => { rotation: 180 }
+          1 => { rotation: 180 },
         }
       )
     end

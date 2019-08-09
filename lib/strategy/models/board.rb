@@ -1,4 +1,4 @@
-require 'kablammo'
+require "kablammo"
 
 module Strategy::Model
   class Board

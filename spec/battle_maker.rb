@@ -1,4 +1,4 @@
-require 'kablammo'
+require "kablammo"
 
 module BattleMaker
   def self.make(map, robot_overrides = {})
@@ -17,12 +17,12 @@ module BattleMaker
       width: width,
       height: height,
       walls: walls,
-      robots: robots
+      robots: robots,
     )
 
     # Filter out invisible opponents
     player = battle.robots[0]
-    battle.robots.filter! do |robot| 
+    battle.robots.filter! do |robot|
       if robot == player
         true
       else
@@ -38,7 +38,7 @@ module BattleMaker
 
     each_cell(map) do |cell, x, y|
       next unless cell == "x"
-      walls.push({x: x, y: y})
+      walls.push({ x: x, y: y })
     end
 
     walls
@@ -52,7 +52,7 @@ module BattleMaker
       robots.push({
         username: "robot_#{cell}",
         x: x,
-        y: y
+        y: y,
       })
     end
 
@@ -68,12 +68,11 @@ module BattleMaker
   end
 
   def self.make_battle(
-    width: 5,
-    height: 5,
-    walls:,
-    robots:
-  )
-    default_robot =  {
+                       width: 5,
+                       height: 5,
+                       walls:,
+                       robots:)
+    default_robot = {
       username: "robot",
       last_turn: "*",
       x: 0,
@@ -83,7 +82,7 @@ module BattleMaker
       rotation: 0,
       direction: 0,
       abilities: [],
-      power_ups: []
+      power_ups: [],
     }
 
     Strategy::Model::Battle.new(
@@ -93,9 +92,9 @@ module BattleMaker
           height: height,
           walls: walls,
           robots: robots.map { |robot| default_robot.merge(robot) },
-          power_ups: []
-        }
-      }
+          power_ups: [],
+        },
+      },
     )
   end
 end

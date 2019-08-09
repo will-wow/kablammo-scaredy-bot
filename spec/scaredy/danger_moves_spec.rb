@@ -1,8 +1,8 @@
-require 'matrix'
+require "matrix"
 
-require 'scaredy/danger_matrix'
-require 'scaredy/cell'
-require 'scaredy/danger_moves'
+require "scaredy/danger_matrix"
+require "scaredy/cell"
+require "scaredy/danger_moves"
 
 RSpec.describe Scaredy::DangerMoves do
   context "given a danger matrix" do
@@ -15,13 +15,13 @@ RSpec.describe Scaredy::DangerMoves do
     end
 
     it "moves toward safety" do
-      me = Scaredy::Cell.new(1, 1) 
+      me = Scaredy::Cell.new(1, 1)
 
       expect(Scaredy::DangerMoves.best_moves(me, danger_matrix)).to eq(["w", ".", "s", "e", "n"])
     end
 
     it "won't move off the map" do
-      me = Scaredy::Cell.new(0, 1) 
+      me = Scaredy::Cell.new(0, 1)
 
       expect(Scaredy::DangerMoves.best_moves(me, danger_matrix)).to eq([".", "e", "n", "s"])
     end

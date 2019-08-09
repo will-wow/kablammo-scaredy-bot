@@ -1,9 +1,9 @@
-require 'matrix'
+require "matrix"
 
-require 'strategy/constants'
-require 'strategy/constants'
-require_relative './cell'
-require_relative './danger_score'
+require "strategy/constants"
+require "strategy/constants"
+require_relative "./cell"
+require_relative "./danger_score"
 
 module Scaredy
   class DangerMatrix
@@ -31,7 +31,7 @@ module Scaredy
       @matrix[y, x]
     end
 
-    def safe?(x, y) 
+    def safe?(x, y)
       at(x, y) == 0
     end
 

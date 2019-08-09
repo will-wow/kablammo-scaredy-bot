@@ -1,8 +1,8 @@
-require 'scaredy/danger_matrix'
-require 'scaredy/danger_moves'
+require "scaredy/danger_matrix"
+require "scaredy/danger_moves"
 
 # TODO: There's got to be a better way.
-require_relative './lib/strategy/models/board'
+require_relative "./lib/strategy/models/board"
 
 include Scaredy
 
@@ -60,7 +60,7 @@ def record_opponents
   opponents.each do |opponent|
     @opponents[opponent.username] = {
       last_seen: @turn,
-      opponent: opponent
+      opponent: opponent,
     }
   end
 
@@ -93,5 +93,5 @@ def fire_at!(enemy, compensate = 0)
 end
 
 def dead_players
-  battle.robots.filter{|r| r.dead? }
+  battle.robots.filter { |r| r.dead? }
 end
