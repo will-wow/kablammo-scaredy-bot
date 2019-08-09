@@ -1,8 +1,8 @@
 require "matrix"
 
-require "scaredy/danger_matrix"
-require "scaredy/cell"
-require "scaredy/danger_moves"
+require_relative "../../lib/scaredy/danger_matrix"
+require_relative "../../lib/scaredy/cell"
+require_relative "../../lib/scaredy/danger_moves"
 
 RSpec.describe Scaredy::DangerMoves do
   context "given a danger matrix" do

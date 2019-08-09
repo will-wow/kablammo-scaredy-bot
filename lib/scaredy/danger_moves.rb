@@ -1,5 +1,4 @@
-require "strategy/constants"
-require "strategy/models"
+require "kablammo"
 
 module Scaredy
   class DangerMoves

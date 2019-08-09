@@ -1,7 +1,6 @@
 require "matrix"
+require "kablammo"
 
-require "strategy/constants"
-require "strategy/constants"
 require_relative "./cell"
 require_relative "./danger_score"
 

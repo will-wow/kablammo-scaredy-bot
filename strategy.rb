@@ -1,5 +1,5 @@
-require "scaredy/danger_matrix"
-require "scaredy/danger_moves"
+require_relative "./lib/scaredy/danger_matrix"
+require_relative "./lib/scaredy/danger_moves"
 
 # TODO: There's got to be a better way.
 require_relative "./lib/strategy/models/board"
