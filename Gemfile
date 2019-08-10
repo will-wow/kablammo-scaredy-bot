@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-# gem "rails"
 gem "kablammo", github: "carbonfive/kablammo-strategy"
 
 group :development do
@@ -10,6 +9,5 @@ group :development do
 end
 
 group :test do
-  gem "rack-test"
   gem "rspec"
 end

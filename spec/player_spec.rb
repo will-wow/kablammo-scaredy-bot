@@ -1,5 +1,4 @@
 require "kablammo"
-require_relative "./battle_maker"
 
 RSpec.describe Player do
   subject { Player.load_strategy("robot_0") }

@@ -1,6 +1,6 @@
+require "kablammo"
 require "matrix"
 
-require_relative "../battle_maker"
 require_relative "../../lib/scaredy/danger_matrix"
 
 RSpec.describe Scaredy::DangerMatrix do
